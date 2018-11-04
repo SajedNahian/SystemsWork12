@@ -5,7 +5,7 @@ dirinfo.o: dirinfo.c
 	gcc -c dirinfo.c
 
 run:
-	./a.out
+	./a.out $(dir)
 
 clean:
 	rm *.o
