@@ -47,12 +47,14 @@ int main (int argc, char *argv[]) {
         strcpy(filePath, "./");
         strcat(filePath, cur->d_name);
         stat(filePath, buffer);
-        size += buffer -> st_size;
+        if(cur -> d_type != 4){
+            size += buffer -> st_size;
+        }
         printf("%s", cur->d_name);
         if (cur -> d_type == 4) {
             printf(" (Directory)");
         }
-        printf(" (%d btyes)\n", buffer -> st_size);
+        printf("\n");
 
         cur = readdir(dir_stream);
     }
