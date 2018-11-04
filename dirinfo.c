@@ -12,6 +12,7 @@ int main (int argc, char *argv[]) {
     if (argc < 2) {
         printf("No command line argument for directory found\n");
         while (1) {
+            printf("Type './' for this directory\n");
             printf("Enter a directory name: ");
             fgets(dir_path, sizeof(dir_path), stdin);
             if (!(strlen(dir_path) == 0 || dir_path[0] == '\n')) {
@@ -31,6 +32,7 @@ int main (int argc, char *argv[]) {
     DIR * dir_stream = opendir(dir_path);
 
     if (!dir_stream) {
+        printf("----ERROR----\n");
         printf("%s\n", strerror(errno));
         return -1; 
     }
@@ -50,7 +52,7 @@ int main (int argc, char *argv[]) {
         if (cur -> d_type == 4) {
             printf(" (Directory)");
         }
-        printf("\n");
+        printf(" (%d btyes)\n", buffer -> st_size);
 
         cur = readdir(dir_stream);
     }

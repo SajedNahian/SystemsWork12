@@ -1,12 +1,12 @@
 cake: dirinfo.o
-	gcc dirinfo.o
+	gcc -o out dirinfo.o
 
 dirinfo.o: dirinfo.c
 	gcc -c dirinfo.c
 
 run:
-	./a.out $(dir)
+	./out $(dir)
 
 clean:
 	rm *.o
-	rm *.out
+	rm ./out
